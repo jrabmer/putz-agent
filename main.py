@@ -50,6 +50,6 @@ def receive_latest_email():
     print(msg['Subject'])
     print(get_first_text_block(msg))
 
-
-send_mail(agent_email, "github tets", "This is an email test from github actions")
+if __name__ == "__main__":
+    send_mail(agent_email, "github tets", "This is an email test from github actions")
 #receive_latest_email()
