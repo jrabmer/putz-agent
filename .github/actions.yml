@@ -19,5 +19,5 @@ jobs:
 
       - name: execute py script # run main.py
         env:
-          SOME_SECRET: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: python main.py
