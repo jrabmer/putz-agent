@@ -1,8 +1,8 @@
-name: run agent.py
+name: run main.py
 
 on:
   schedule:
-    - cron: '5 * * * *' # At 00:00 on Monday
+    - cron: '15 * * * *'
 
 jobs:
   build:
@@ -20,4 +20,4 @@ jobs:
       - name: execute py script # run agent.py
         env:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        run: python agent.py
+        run: python main.py
