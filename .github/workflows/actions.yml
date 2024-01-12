@@ -2,7 +2,7 @@ name: run agent.py
 
 on:
   schedule:
-    - cron: '* * * * *' # At 00:00 on Monday
+    - cron: '5 * * * *' # At 00:00 on Monday
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.10' # install the python version needed
 
-      - name: execute py script # run main.py
+      - name: execute py script # run agent.py
         env:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        run: python main.py
+        run: python agent.py
