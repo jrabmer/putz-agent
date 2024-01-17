@@ -10,3 +10,4 @@ Resets every week to keep it simple. Can be extended of course in the future. Ca
 5. User sends confirmation that they cleaned
 6. Agent notes this down (optional)
 
+![State Diagram of agent](/project_documentation/putz_agent_state_diagram.drawio.png?raw=true "State Diagram")
