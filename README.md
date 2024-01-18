@@ -11,3 +11,6 @@ Resets every week to keep it simple. Can be extended of course in the future. Ca
 6. Agent notes this down (optional)
 
 ![State Diagram of agent](/project_documentation/putz_agent_state_diagram.drawio.png?raw=true "State Diagram")
+
+## Penalty Cleaning
+If someone misses their cleaning task, they will receive a punishment point. These will be saved in a file. The agent then decides the assignemnt of the cleaning areas of the next week with these points in mind. This will be done in a simple manner. There are three cleaning areas. For each cleaning area, the agent will pick a random element from an array (that contains the names of all wg members). If the user a has n punishment points, then n additional a elements will be added to the array. Therefore the chance for a user to have to clean multiple areas increases depending on how many points you have. This also has the effect that in some weeks, other wg members might not have to clean at all.
