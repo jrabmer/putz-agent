@@ -3,6 +3,7 @@ import ssl
 import imaplib
 import email
 import os
+import csv
 
 try:
     password = os.environ["EMAIL_PASSWORD"]
@@ -63,13 +64,40 @@ class Agent:
         print(msg['Subject'])
         print(self.get_first_text_block(msg))
 
-    def read_points_from_file(self):
-        # TODO: Implement
-        pass
+    def read_points_from_file(self, user=None):
+        data = []
+        with open("penalty_points.csv", "r") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                data.append(row)
 
-    def write_points_to_file(self, user_points):
-        # TODO: Implement and make sure points are written to correct spot
-        pass
+        # Returns the points as an int for a SPECIFIED user
+        if user:
+            user_data = next((row for row in data if row["User"] == user), None)
+            return user_data
+
+        # Returns the general data for ALL users
+        else:
+            return data
+
+    def write_points_to_file(self, user, action):
+        data = self.read_points_from_file()
+
+        user_data = next((row for row in data if row["User"] == user), None)
+        user_points = int(user_data["Penalties"])
+
+        if action == "add":
+            user_points += 1
+
+        elif action == "subtract":
+            user_points -= 1
+
+        user_data["Penalties"] = str(user_points)
+
+        with open("penalty_points.csv", "w", newline="") as file:
+            writer = csv.DictWriter(file, data[0].keys())
+            writer.writeheader()
+            writer.writerows(data)
 
     def read_scheduled_dates_from_file(self):
         # TODO: Implement
